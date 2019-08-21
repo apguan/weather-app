@@ -23,7 +23,7 @@ export default class WeatherList extends Component {
 		if (this.validateZipcode()) {
 			let times = {}
 
-			axios.get(`/data/2.5/forecast?zip=${this.state.location},us&units=imperial&APPID=d5899153c8878820e426db8eec7aff6e`)
+			axios.get(`http://api.openweathermap.org/data/2.5/forecast?zip=${this.state.location},us&units=imperial&APPID=d5899153c8878820e426db8eec7aff6e`)
 				.then((data) => {
 					let list = data.data.list
 
