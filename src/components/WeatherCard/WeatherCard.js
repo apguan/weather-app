@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Modal from 'react-responsive-modal'
+import ReactAnimatedWeather from 'react-animated-weather'
 
 import DetailedWeather from '../DetailedWeather/DetailedWeather'
 
@@ -36,6 +37,29 @@ export default class WeatherCard extends Component {
     let condition = Object.keys(counter).reduce((a, b) => counter[a] > counter[b] ? a : b);
 
     return condition;
+  }
+
+  weatherIcon = () => {
+    let map = {
+      'Clear': 'CLEAR_DAY',
+      'Clouds': 'PARTLY_CLOUDY_DAY',
+      'Snow': 'SNOW',
+      'Rain': 'RAIN',
+      'Drizzle': 'RAIN',
+      'Thunderstorm': 'SLEET',
+      'Smoke': 'FOG',
+      'Haze': 'FOG',
+      'Dust': 'FOG'
+    }
+    let icon = map[this.getMostCommonWeatherCondition('main')] || 'CLEAR_DAY'
+
+    return (
+      <ReactAnimatedWeather
+        icon={icon}
+        color={'orange'}
+        animate={true}
+      />
+    )
   }
 
   render() {
@@ -80,16 +104,13 @@ export default class WeatherCard extends Component {
         <Card onClick={this.modalView}>
           <h3>{this.displayDate()}</h3>
           <CardContent>
-            <img
-              src={`http://openweathermap.org/img/w/${this.getMostCommonWeatherCondition('icon')}.png`}
-              alt={this.getMostCommonWeatherCondition('description')}
-            />
+            {this.weatherIcon()}
             <p>{this.getMostCommonWeatherCondition('description')}</p>
           </CardContent>
 
           <CardDetail>
-            <h4>high: {high}°</h4>
-            <h4>low: {low}°</h4>
+            <h4>H: {high}°F</h4>
+            <h4>L: {low}°F</h4>
           </CardDetail>
         </Card>
       </>
