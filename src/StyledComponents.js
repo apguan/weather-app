@@ -120,3 +120,14 @@ export let ErrorMessage = styled.div`
       to   { opacity: 1; }
   }
 `
+
+export let Title = styled.h3`
+  text-align: center;
+  margin: 0 auto;
+`
+
+export let WeatherLineItem = styled.table`
+  text-align: left;
+  width: 90%;
+  margin: 0 auto;
+`

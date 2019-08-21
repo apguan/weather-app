@@ -80,7 +80,7 @@ export default class WeatherList extends Component {
 	}
 
 	enterKey = (e) => {
-		if (e.keyCode == 13 && e.shiftKey == false) {
+		if (e.keyCode === 13) {
 			e.preventDefault()
 			this.getWeather()
 		}

@@ -3,7 +3,7 @@ import Modal from 'react-responsive-modal'
 
 import DetailedWeather from './DetailedWeather.js'
 
-import { Card, CardDetail, CardContent } from './../StyledComponents.js'
+import { Card, CardDetail, CardContent, Title, WeatherLineItem } from './../StyledComponents.js'
 
 export default class WeatherCard extends Component {
   state = {
@@ -39,18 +39,46 @@ export default class WeatherCard extends Component {
   }
 
   render() {
-    const { open } = this.state
     const { high, low, hourly } = this.props
 
     return (
-      <div>
-        <Modal open={open} onClose={this.modalView} center>
+      <>
+        <Modal
+          open={this.state.open}
+          onClose={this.modalView}
+          closeIconSize={16}
+          center
+        >
+          <Title>Hourly Forecast</Title>
           <DetailedWeather hourly={hourly} />
+          <WeatherLineItem>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Temperature (F°)</th>
+                <th>Humidity %</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                hourly.map((val, idx) => {
+                  return (
+                    <tr key={idx}>
+                      <td>{val.dt_txt.split(',')[1]}</td>
+                      <td>{Math.ceil(val.main.temp)}°</td>
+                      <td>{val.main.humidity}%</td>
+                      <td>{val.weather[0].description}</td>
+                    </tr>
+                  )
+                })
+              }
+            </tbody>
+          </WeatherLineItem>
         </Modal>
 
         <Card onClick={this.modalView}>
           <h3>{this.displayDate()}</h3>
-
           <CardContent>
             <img
               src={`http://openweathermap.org/img/w/${this.getMostCommonWeatherCondition('icon')}.png`}
@@ -64,7 +92,7 @@ export default class WeatherCard extends Component {
             <h4>low: {low}°</h4>
           </CardDetail>
         </Card>
-      </div>
+      </>
     )
   }
 }

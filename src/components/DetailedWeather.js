@@ -35,11 +35,20 @@ const DetailedWeather = ({ hourly }) => {
             ],
             borderColor: [
               'rgba(129, 207, 224, 0.7)'
-            ]
+            ],
+            hidden: true,
           }
         ]
       }}
       options={{
+        layout: {
+          padding: {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 75
+          }
+        },
         scales: {
           xAxes: [{
             gridLines: {
