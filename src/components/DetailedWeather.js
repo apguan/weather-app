@@ -12,8 +12,6 @@ const DetailedWeather = ({ hourly }) => {
     humidity.push(val.main.humidity)
   })
 
-  console.log(labels)
-
   return (
     <Line
       data={{

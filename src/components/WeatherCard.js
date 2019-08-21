@@ -3,7 +3,7 @@ import Modal from 'react-responsive-modal'
 
 import DetailedWeather from './DetailedWeather.js'
 
-import { Card, CardDetail, ModalDetails, CardContent } from './../StyledComponents.js'
+import { Card, CardDetail, CardContent } from './../StyledComponents.js'
 
 export default class WeatherCard extends Component {
   state = {
@@ -45,30 +45,17 @@ export default class WeatherCard extends Component {
     return (
       <div>
         <Modal open={open} onClose={this.modalView} center>
-          {/* {
-            hourly.map((data, idx) => {
-              let time = data.dt_txt.split(',')[1]
-              return (
-                <ModalDetails key={idx}>
-                  <p>time: {time}</p>
-                  <span>temperature: {Math.ceil(data.main.temp)}</span>
-                  <span>humidity: {data.main.humidity}</span>
-                  <span>description: {data.weather[0].description}</span>
-                </ModalDetails>
-              )
-            })
-          } */}
-          <DetailedWeather
-            hourly={hourly}
-          />
-
+          <DetailedWeather hourly={hourly} />
         </Modal>
 
         <Card onClick={this.modalView}>
           <h3>{this.displayDate()}</h3>
 
           <CardContent>
-            <img src={`http://openweathermap.org/img/w/${this.getMostCommonWeatherCondition('icon')}.png`}></img>
+            <img
+              src={`http://openweathermap.org/img/w/${this.getMostCommonWeatherCondition('icon')}.png`}
+              alt={this.getMostCommonWeatherCondition('description')}
+            />
             <p>{this.getMostCommonWeatherCondition('description')}</p>
           </CardContent>
 

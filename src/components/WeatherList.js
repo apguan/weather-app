@@ -59,7 +59,10 @@ export default class WeatherList extends Component {
 
 	handleLocationChange = (e) => {
 		e.preventDefault()
-		this.setState({ location: e.target.value })
+		this.setState({
+			location: e.target.value,
+			error: false
+		})
 	}
 
 	validateZipcode = () => {
@@ -72,6 +75,15 @@ export default class WeatherList extends Component {
 				this.getWeather()
 			}, 300000)
 		})
+
+		console.log('refreshed!')
+	}
+
+	enterKey = (e) => {
+		if (e.keyCode == 13 && e.shiftKey == false) {
+			e.preventDefault()
+			this.getWeather()
+		}
 	}
 
 	render() {
@@ -86,6 +98,7 @@ export default class WeatherList extends Component {
 						name="zip"
 						type="text"
 						pattern="[0-9]*"
+						onKeyDown={this.enterKey}
 					/>
 					<Enter onClick={this.getWeather}>Get Weather</Enter>
 				</SearchContainer>
