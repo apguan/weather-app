@@ -116,8 +116,6 @@ export default class WeatherContainer extends Component {
 						{
 							Object.keys(this.state.weatherData).length > 0 ?
 								Object.keys(this.state.weatherData).slice(0, 5).map((data, idx) => {
-									console.log(JSON.stringify(data))
-									console.log(JSON.stringify(this.state.weatherData[data].conditions))
 									return (
 										<WeatherCard
 											date={data}
