@@ -63,6 +63,9 @@ export default class WeatherContainer extends Component {
 			location: e.target.value,
 			error: false
 		})
+
+		clearInterval(this.state.interval)
+		this.refreshData()
 	}
 
 	validateZipcode = () => {
@@ -111,18 +114,23 @@ export default class WeatherContainer extends Component {
 				<ErrorBoundary>
 					<Container>
 						{
-							Object.keys(this.state.weatherData).slice(0, 5).map((data, idx) => {
-								return (
-									<WeatherCard
-										date={data}
-										high={this.state.weatherData[data].maxTemp}
-										low={this.state.weatherData[data].minTemp}
-										hourly={this.state.weatherData[data].hourly}
-										conditions={this.state.weatherData[data].conditions}
-										key={idx}
-									/>
-								)
-							})
+							Object.keys(this.state.weatherData).length > 0 ?
+								Object.keys(this.state.weatherData).slice(0, 5).map((data, idx) => {
+									console.log(JSON.stringify(data))
+									console.log(JSON.stringify(this.state.weatherData[data].conditions))
+									return (
+										<WeatherCard
+											date={data}
+											high={this.state.weatherData[data].maxTemp}
+											low={this.state.weatherData[data].minTemp}
+											hourly={this.state.weatherData[data].hourly}
+											conditions={this.state.weatherData[data].conditions}
+											key={idx}
+										/>
+									)
+								})
+								:
+								null
 						}
 					</Container>
 				</ErrorBoundary>

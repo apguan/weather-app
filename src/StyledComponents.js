@@ -1,5 +1,10 @@
 import styled from 'styled-components'
 
+export let AppContainer = styled.div`
+  font-family: "Roboto", sans - serif;
+  text-align: center;
+`
+
 export const SearchContainer = styled.div`
   display: flex;
   width: 25%;

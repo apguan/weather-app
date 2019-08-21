@@ -1,13 +1,13 @@
 import React from 'react';
+
 import WeatherContainer from './components/WeatherContainer.js'
 
-import './App.css';
-
+import { AppContainer } from './StyledComponents'
 function App() {
   return (
-    <div className="App">
+    <AppContainer>
       <WeatherContainer />
-    </div>
+    </AppContainer>
   );
 }
 
