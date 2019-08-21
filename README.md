@@ -2,7 +2,7 @@
 
 #### To run development mode
 
-Run 'npm install' - this will install all dependencies needed
+Run `npm install` - this will install all dependencies needed
 
 To launch the development server, run `yarn start` and visit `http://localhost:3000/`
 
