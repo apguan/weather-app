@@ -1,12 +1,12 @@
 import React from 'react';
-import WeatherList from './components/WeatherList.js'
+import WeatherContainer from './components/WeatherContainer.js'
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <WeatherList />
+      <WeatherContainer />
     </div>
   );
 }

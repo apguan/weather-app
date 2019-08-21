@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-import WeatherCard from './WeatherCard.js'
+import WeatherCard from './WeatherCard/WeatherCard'
 import ErrorBoundary from './ErrorBoundary.js'
 
-import { SearchContainer, Input, Enter, Container, ErrorMessage } from './../StyledComponents.js'
+import { SearchContainer, Input, Enter, Container, ErrorMessage } from '../StyledComponents.js'
 
-export default class WeatherList extends Component {
+export default class WeatherContainer extends Component {
 	state = {
 		location: '94105',
 		weatherData: {},
@@ -73,10 +73,9 @@ export default class WeatherList extends Component {
 		this.setState({
 			interval: setInterval(() => {
 				this.getWeather()
+				console.log('weather data refreshed!')
 			}, 300000)
 		})
-
-		console.log('refreshed!')
 	}
 
 	enterKey = (e) => {
@@ -113,7 +112,6 @@ export default class WeatherList extends Component {
 					<Container>
 						{
 							Object.keys(this.state.weatherData).slice(0, 5).map((data, idx) => {
-
 								return (
 									<WeatherCard
 										date={data}

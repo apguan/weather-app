@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Modal from 'react-responsive-modal'
 
-import DetailedWeather from './DetailedWeather.js'
+import DetailedWeather from '../DetailedWeather/DetailedWeather'
 
-import { Card, CardDetail, CardContent, Title, WeatherLineItem } from './../StyledComponents.js'
+import { Card, CardDetail, CardContent, Title, WeatherLineItem } from '../../StyledComponents.js'
 
 export default class WeatherCard extends Component {
   state = {
@@ -49,7 +49,7 @@ export default class WeatherCard extends Component {
           closeIconSize={16}
           center
         >
-          <Title>Hourly Forecast</Title>
+          <Title>3-Hourly Forecast</Title>
           <DetailedWeather hourly={hourly} />
           <WeatherLineItem>
             <thead>
