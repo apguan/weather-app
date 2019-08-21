@@ -12,7 +12,11 @@ export const Input = styled.input`
 	width:250px;
 	border:none;
 	border-bottom:1px solid #757575;
-	text-align: center;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
 `
 
 export const Enter = styled.button`
@@ -59,11 +63,12 @@ export let Card = styled.div`
 
 export let CardDetail = styled.div`
   position: absolute;
-  text-align: justify;
-  width: 40%;
-  margin: 0 30%;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
   bottom: 0;
   line-height: 0.75em;
+  background-color: rgba(220,220,220, 0.5);
 `
 
 export let CardContent = styled.div`

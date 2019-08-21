@@ -10,11 +10,13 @@ export default class WeatherList extends Component {
 	state = {
 		location: '94105',
 		weatherData: {},
-		error: false
+		error: false,
+		interval: null
 	}
 
 	componentDidMount() {
 		this.getWeather()
+		this.refreshData()
 	}
 
 	getWeather = () => {
@@ -62,6 +64,14 @@ export default class WeatherList extends Component {
 
 	validateZipcode = () => {
 		return /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.state.location)
+	}
+
+	refreshData = () => {
+		this.setState({
+			interval: setInterval(() => {
+				this.getWeather()
+			}, 300000)
+		})
 	}
 
 	render() {
